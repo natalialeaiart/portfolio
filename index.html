@@ -448,7 +448,7 @@
 
             /* Первый слой */
             body::before {
-                opacity: 0.35;
+                opacity: 0.75;
                 background:
                     repeating-linear-gradient(
                         calc(100deg + var(--a, 0deg)),
@@ -464,7 +464,7 @@
                         rgba(139, 92, 246, 0.06) 44px,
                         rgba(139, 92, 246, 0.00) 66px
                     );
-                filter: blur(18px) saturate(130%);
+                filter: blur(14px) saturate(180%);
                 mix-blend-mode: screen;
                 transform: translate3d(0,0,0);
                 animation: shimmerMove 14s ease-in-out infinite;
@@ -472,7 +472,7 @@
 
             /* Второй слой — мягче */
             body::after {
-                opacity: 0.20;
+                opacity: 0.70;
                 background:
                     repeating-linear-gradient(
                         calc(70deg + var(--a, 0deg)),
@@ -481,7 +481,7 @@
                         rgba(139, 92, 246, 0.06) 56px,
                         rgba(139, 92, 246, 0.00) 84px
                     );
-                filter: blur(22px) saturate(120%);
+                filter: blur(18px) saturate(150%);
                 mix-blend-mode: screen;
                 transform: translate3d(0,0,0);
                 animation: shimmerMove2 18s ease-in-out infinite;
