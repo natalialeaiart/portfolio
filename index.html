@@ -8,17 +8,36 @@
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
         
         :root {
-            /* Новая цветовая схема на основе #69bbd6 */
-            --primary-color: #69bbd6;
-            --primary-dark: #4a9bb8;
-            --primary-darker: #3a7a93;
-            --background-light: #e8f4f8;
-            --background-medium: #f0f8fb;
-            --text-dark: #2c3e50;
-            --text-light: #ffffff;
-            --shadow-color: rgba(105, 187, 214, 0.1);
-            --accent-color: #5ba8c4;
+            /* Soft AI Personal Brand Palette */
+
+            /* Primary (мягкий лавандовый) */
+            --primary-color: #D9CBEA;
+            --primary-dark: #BFAEDC;
+            --primary-darker: #A995D3;
+
+            /* Background */
+            --background-light: #F5F2FA;
+            --background-medium: #EDE7F7;
+
+            /* Dark sections / footer */
+            --background-dark: #2B2236;
+
+            /* Text */
+            --text-dark: #2A2438;
+            --text-light: #FFFFFF;
+
+            /* Accent (AI glow фиолетовый) */
+            --accent-color: #8B5CF6;
+            --accent-hover: #A855F7;
+
+            /* Shadow */
+            --shadow-color: rgba(43, 34, 54, 0.15);
         }
+
+        button.primary {
+           background: var(--accent-color);
+           box-shadow: 0 8px 24px rgba(139, 92, 246, 0.25);
+         }
         
         * {
             box-sizing: border-box;
