@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Video Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap');
+        
+        :root {
+            /* Soft AI Personal Brand Palette */
+            --primary-color: #D9CBEA;
+            --primary-dark: #BFAEDC;
+            --primary-darker: #A995D3;
+
+            /* Background */
+            --background-light: #F5F2FA;
+            --background-medium: #EDE7F7;
+
+            /* Dark sections / footer */
+            --background-dark: #2B2236;
+
+            /* Text */
+            --text-dark: #2A2438;
+            --text-medium: #3A324F;
+            --text-light: #FFFFFF;
+            
+            /* Заголовки */
+            --heading-color: #2B2236;
+
+            /* Accent (AI glow фиолетовый) */
+            --accent-color: #8B5CF6;
+            --accent-hover: #A855F7;
+
+            /* Shadow */
+            --shadow-color: rgba(43, 34, 54, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(135deg, #2B2236 0%, #3A2F4E 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #F5F2FA;
+            border-radius: 16px;
+            box-shadow: 0 16px 48px rgba(20, 15, 25, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            position: relative;
+            z-index: 1; /* ДОБАВЛЕНО ПО ТЗ: Карточка выше фона */
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+
+        h1, h2 {
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            /* Обновленный цвет, вес и трекинг заголовка */
+            color: var(--text-dark);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 24px;
+        }
+
+        .intro {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .intro img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            margin: 0 auto 24px;
+            display: block;
+            border: none;
+            outline: none;
+            box-shadow: none;
+            border-radius: 75% 25% 60% 40% / 45% 55% 35% 65%;
+            filter: drop-shadow(0 8px 16px rgba(139, 92, 246, 0.2));
+            transition: all 0.3s ease;
+        }
+
+        .intro img:hover {
+            border-radius: 60% 40% 75% 25% / 55% 45% 65% 35%;
+            filter: drop-shadow(0 12px 24px rgba(139, 92, 246, 0.3));
+            transform: translateY(-5px);
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .intro::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--primary-dark));
+            border-radius: 2px;
+        }
+
+        /* --- ГЛАВНЫЕ КНОПКИ --- */
+        .button-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .btn-large-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-large-primary:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(168, 85, 247, 0.4);
+        }
+
+        /* Обновленная Secondary кнопка (About) */
+        .btn-large-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 32px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            background: transparent;
+            border: 1px solid rgba(43, 34, 54, 0.20);
+            color: var(--text-dark);
+        }
+
+        .btn-large-secondary:hover {
+            border-color: rgba(139, 92, 246, 0.45);
+            box-shadow: 0 10px 22px rgba(31, 24, 41, 0.10);
+            transform: translateY(-1px);
+        }
+
+        /* --- БЛОК КОНТАКТОВ (Contact Card) --- */
+        .contact-card {
+            margin-top: 22px;
+            padding: 18px 16px;
+            border-radius: 16px;
+            /* Более "дорогой" и чистый фон */
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid rgba(43, 34, 54, 0.12);
+            box-shadow: 0 18px 44px rgba(31, 24, 41, 0.14);
+            backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* "Живая" AI glow линия */
+        .contact-card::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 88px;
+            height: 3px;
+            border-radius: 999px;
+            background: linear-gradient(
+                90deg,
+                rgba(139, 92, 246, 0),
+                rgba(139, 92, 246, 0.85),
+                rgba(168, 85, 247, 0.85),
+                rgba(139, 92, 246, 0)
+            );
+            box-shadow:
+                0 0 18px rgba(139, 92, 246, 0.35),
+                0 0 30px rgba(168, 85, 247, 0.20);
+            animation: glowPulse 2.6s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0% { opacity: 0.65; transform: translateX(-50%) scaleX(0.96); }
+            50% { opacity: 1;   transform: translateX(-50%) scaleX(1.06); }
+            100% { opacity: 0.65; transform: translateX(-50%) scaleX(0.96); }
+        }
+
+        /* Header */
+        .contact-card__header {
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 10px; /* Немного отступа для линии */
+        }
+
+        .contact-card__header h3 {
+            color: var(--heading-color);
+            font-size: 20px;
+            margin: 0 0 6px 0;
+            font-weight: 600;
+        }
+
+        .contact-card__header p {
+            color: var(--text-medium);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Labels */
+        .label {
+            font-size: 12px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: rgba(42, 36, 56, 0.65);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        /* Preferred contact */
+        .contact-card__preferred {
+            text-align: center;
+            padding: 16px 14px;
+            border-radius: 14px;
+            background: rgba(217, 203, 234, 0.18);
+            border: 1px solid rgba(43, 34, 54, 0.08);
+            margin-bottom: 20px;
+        }
+
+        .hint {
+            margin-top: 10px;
+            font-size: 12px;
+            color: rgba(42, 36, 56, 0.70);
+        }
+
+        /* Buttons base inside contact card */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid transparent;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+        }
+
+        /* Primary WhatsApp button */
+        .btn-primary {
+            background: var(--accent-color);
+            color: var(--text-light);
+            box-shadow: 0 10px 26px rgba(139, 92, 246, 0.35);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 12px 32px rgba(168, 85, 247, 0.45);
+        }
+
+        /* Socials */
+        .contact-card__socials {
+            text-align: center;
+        }
+
+        .social-grid {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-ghost {
+            background: rgba(217, 203, 234, 0.30);
+            color: var(--text-dark);
+            border-color: rgba(43, 34, 54, 0.12);
+        }
+
+        .btn-ghost:hover {
+            border-color: rgba(139, 92, 246, 0.45);
+            box-shadow: 0 10px 22px rgba(31, 24, 41, 0.10);
+            transform: translateY(-1px);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 30px 20px;
+                border-radius: 12px;
+            }
+
+            .intro img {
+                width: 160px;
+                height: 160px;
+            }
+
+            .button-row {
+                flex-direction: column;
+                align-items
