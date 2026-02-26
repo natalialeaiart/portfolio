@@ -1,4 +1,4 @@
-# Natalja's AI Portfolio Site
+# Natalia's AI Portfolio Site
 
 A personal portfolio site built with pure HTML and CSS — no frameworks, no website builders. Developed with the help of AI coding assistants (ChatGPT, Gemini, Claude) and hosted on GitHub Pages.
 
